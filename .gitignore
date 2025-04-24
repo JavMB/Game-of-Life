@@ -1,0 +1,24 @@
+# === Gradle ===
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# === Java output ===
+out/
+**/out/
+**/build/
+
+# === Sistema ===
+.DS_Store
+Thumbs.db
+
+# === Archivos temporales ===
+*.log
+*.tmp
+*.swp
