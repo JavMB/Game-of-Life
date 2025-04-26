@@ -36,25 +36,34 @@ public class GameOfLife {
 
     public boolean[][] recorrido() {
         boolean[][] nueva = new boolean[vida.length][vida[0].length];
+        int contadorVivas;
+
 
         for (int i = 0; i < vida.length; i++) {
             for (int j = 0; j < vida[i].length; j++) {
-                nueva[i][j] = juego(i, j);
-            }
+                contadorVivas = contarVecinas(i, j);
 
+                nueva[i][j] = determinar(vida[i][j], contadorVivas);
+            }
         }
+
 
         return nueva;
     }
 
-    //TODO contar vivas,teniendo en cuenta bordes esquinas null
-    private boolean juego(int i, int j) {
-        boolean celula = vida[i][j];
-        int contadorVivas = 0;
-
-
-
-        return determinar(celula, contadorVivas);
+    // ha costado...
+    private int contarVecinas(int i, int j) {
+        int contador = 0;
+        for (int k = i - 1; k <= i + 1; k++) {
+            for (int l = j - 1; l <= j + 1; l++) {
+                if (k < 0 || l < 0 || k >= vida.length || l >= vida[0].length)
+                    continue;
+                if (k == i && l == j)
+                    continue;
+                if (vida[k][l]) contador++;
+            }
+        }
+        return contador;
     }
 
 
